@@ -131,6 +131,7 @@ const Index = () => {
         console.log('✅ Mapped applications PTP dates:', mappedApplications.map(app => app.ptp_date));
         
         setAllApplications(mappedApplications);
+        setApplications(mappedApplications); // Also update the current applications state
         setTotalCount(data.total || 0);
       })
       .catch((error) => {

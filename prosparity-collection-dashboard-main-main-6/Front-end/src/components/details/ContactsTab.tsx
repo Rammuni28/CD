@@ -348,7 +348,8 @@ const ContactsTab = ({ application, callingLogs, onCallingStatusChange, selected
           <Users className="h-5 w-5 text-blue-600" />
           <h3 className="text-lg font-semibold text-gray-900">Application Contacts</h3>
         </div>
-        <Button
+        {/* Refresh button hidden as requested */}
+        {/* <Button
           variant="outline"
           size="sm"
           onClick={refreshContacts}
@@ -357,7 +358,7 @@ const ContactsTab = ({ application, callingLogs, onCallingStatusChange, selected
         >
           <RefreshCw className={`h-4 w-4 ${contactsLoading ? 'animate-spin' : ''}`} />
           Refresh
-        </Button>
+        </Button> */}
       </div>
 
       {/* Error state */}
@@ -413,8 +414,8 @@ const ContactsTab = ({ application, callingLogs, onCallingStatusChange, selected
       {/* FI Location Display */}
       <FiLocationDisplay fiLocation={application.fi_location} />
 
-      {/* Recent Call Activity - Compact View */}
-      <Card>
+      {/* Recent Call Activity - Hidden as requested */}
+      {/* <Card>
         <CardHeader className="pb-3">
           <CardTitle className="text-sm flex items-center justify-between">
             <div className="flex items-center gap-2">
@@ -461,16 +462,16 @@ const ContactsTab = ({ application, callingLogs, onCallingStatusChange, selected
             </div>
           )}
         </CardContent>
-      </Card>
+      </Card> */}
 
-      {/* Log Dialog */}
-      <LogDialog
+      {/* Log Dialog - Hidden as requested */}
+      {/* <LogDialog
         open={showLogDialog}
         onClose={() => setShowLogDialog(false)}
         logs={callingLogs}
         title="Call Activity History"
         type="calling"
-      />
+      /> */}
     </div>
   );
 };

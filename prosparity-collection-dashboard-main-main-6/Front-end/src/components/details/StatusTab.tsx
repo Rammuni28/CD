@@ -873,8 +873,8 @@ const StatusTab = ({ application, auditLogs, onStatusChange, onPtpDateChange, ad
         </CardContent>
       </Card>
 
-      {/* Recent Status & PTP Changes */}
-      <Card>
+      {/* Recent Status & PTP Changes - Hidden as requested */}
+      {/* <Card>
         <CardHeader className="pb-3">
           <CardTitle className="text-sm flex items-center justify-between">
             <div className="flex items-center gap-2">
@@ -919,16 +919,16 @@ const StatusTab = ({ application, auditLogs, onStatusChange, onPtpDateChange, ad
             </div>
           )}
         </CardContent>
-      </Card>
+      </Card> */}
 
-      {/* Log Dialog */}
-      <LogDialog
+      {/* Log Dialog - Hidden as requested */}
+      {/* <LogDialog
         open={showLogDialog}
         onClose={() => setShowLogDialog(false)}
         logs={Array.isArray(statusAndPtpLogs) ? statusAndPtpLogs : []}
         title="Status & PTP Date History"
         type="audit"
-      />
+      /> */}
     </div>
   );
 };

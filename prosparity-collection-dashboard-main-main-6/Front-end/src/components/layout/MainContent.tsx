@@ -32,17 +32,19 @@ const MainContent = ({
 
   return (
     <div className="space-y-4">
-      {/* Results Summary */}
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center text-xs sm:text-sm text-gray-600 gap-2 sm:gap-0">
-        <span>
-          Showing {((currentPage - 1) * pageSize) + 1} to {Math.min(currentPage * pageSize, totalCount)} of {totalCount} applications
-        </span>
-        {totalCount >= 1000 && (
-          <span className="text-amber-600 font-medium text-xs sm:text-sm">
-            Showing first 1,000 results
+      {/* Results Summary - Only show when there are applications */}
+      {applications.length > 0 && (
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center text-xs sm:text-sm text-gray-600 gap-2 sm:gap-0">
+          <span>
+            Showing {((currentPage - 1) * pageSize) + 1} to {Math.min(currentPage * pageSize, totalCount)} of {totalCount} applications
           </span>
-        )}
-      </div>
+          {totalCount >= 1000 && (
+            <span className="text-amber-600 font-medium text-xs sm:text-sm">
+              Showing first 1,000 results
+          </span>
+          )}
+        </div>
+      )}
 
       {/* Table */}
       {isMobile ? (
@@ -61,8 +63,8 @@ const MainContent = ({
         />
       )}
 
-      {/* Pagination */}
-      {totalPages > 1 && (
+      {/* Pagination - Only show when there are applications */}
+      {applications.length > 0 && totalPages > 1 && (
         <PaginationControls
           currentPage={currentPage}
           totalPages={totalPages}

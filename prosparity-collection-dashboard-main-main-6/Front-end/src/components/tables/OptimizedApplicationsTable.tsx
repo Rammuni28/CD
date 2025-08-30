@@ -98,54 +98,58 @@ const OptimizedApplicationsTable = memo(({
 
   return (
     <div className="rounded-lg border border-gray-200 overflow-hidden shadow-sm">
-      <div className="overflow-x-auto">
-        <Table>
-          <TableHeader />
-          <TableBody>
-            {applications.map((application) => (
-              <ApplicationRow
-                key={application.id}
-                application={application}
-                selectedApplicationId={selectedApplicationId}
-                onRowClick={onRowClick}
-                selectedEmiMonth={selectedEmiMonth}
-                // Pass batched data as props - use preloaded data if available
-                batchedStatus={preloadedStatusData?.[application.applicant_id] || effectiveData.statuses?.[application.applicant_id] || 'Unpaid'}
-                batchedPtpDate={effectiveData.ptpDates?.[application.applicant_id] || null}
-                batchedContactStatus={effectiveData.contactStatuses?.[application.applicant_id]}
-                batchedComments={effectiveData.comments?.[application.applicant_id] || []}
-                isLoading={effectiveLoading}
-              />
-            ))}
-          </TableBody>
-        </Table>
-      </div>
-      
-      {error && !preloadedBatchData && (
-        <div className="text-center py-8 text-red-600 bg-red-50">
-          <p className="text-lg font-medium">Error loading data</p>
-          <p className="text-sm">{error.message}</p>
-          <button 
-            onClick={loadBatchData}
-            className="mt-2 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
-          >
-            Retry
-          </button>
+      {applications.length > 0 ? (
+        <div className="overflow-x-auto">
+          <Table>
+            <TableHeader />
+            <TableBody>
+              {applications.map((application) => (
+                <ApplicationRow
+                  key={application.id}
+                  application={application}
+                  selectedApplicationId={selectedApplicationId}
+                  onRowClick={onRowClick}
+                  selectedEmiMonth={selectedEmiMonth}
+                  // Pass batched data as props - use preloaded data if available
+                  batchedStatus={preloadedStatusData?.[application.applicant_id] || effectiveData.statuses?.[application.applicant_id] || 'Unpaid'}
+                  batchedPtpDate={effectiveData.ptpDates?.[application.applicant_id] || null}
+                  batchedContactStatus={effectiveData.contactStatuses?.[application.applicant_id]}
+                  batchedComments={effectiveData.comments?.[application.applicant_id] || []}
+                  isLoading={effectiveLoading}
+                />
+              ))}
+            </TableBody>
+          </Table>
         </div>
-      )}
-      
-      {applications.length === 0 && !effectiveLoading && !error && (
-        <div className="text-center py-12 text-muted-foreground">
-          <p className="text-lg font-medium text-gray-500">No applications found</p>
-          <p className="text-sm text-gray-400">Try adjusting your filters</p>
-        </div>
-      )}
+      ) : (
+        <>
+          {error && !preloadedBatchData && (
+            <div className="text-center py-8 text-red-600 bg-red-50">
+              <p className="text-lg font-medium">Error loading data</p>
+              <p className="text-sm">{error.message}</p>
+              <button 
+                onClick={loadBatchData}
+                className="mt-2 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+              >
+                Retry
+              </button>
+            </div>
+          )}
+          
+          {!error && !effectiveLoading && (
+            <div className="text-center py-12 text-muted-foreground">
+              <p className="text-lg font-medium text-gray-500">No applications found</p>
+              <p className="text-sm text-gray-400">Try adjusting your filters or search terms</p>
+            </div>
+          )}
 
-      {effectiveLoading && applications.length === 0 && (
-        <div className="text-center py-12 text-muted-foreground">
-          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto mb-4"></div>
-          <p className="text-lg font-medium text-gray-500">Loading applications...</p>
-        </div>
+          {effectiveLoading && (
+            <div className="text-center py-12 text-muted-foreground">
+              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto mb-4"></div>
+              <p className="text-lg font-medium text-gray-500">Loading applications...</p>
+            </div>
+          )}
+        </>
       )}
     </div>
   );

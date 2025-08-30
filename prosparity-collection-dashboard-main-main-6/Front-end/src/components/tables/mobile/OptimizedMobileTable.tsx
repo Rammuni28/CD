@@ -16,6 +16,17 @@ const OptimizedMobileTable = memo(({
   selectedApplicationId,
   selectedEmiMonth 
 }: OptimizedMobileTableProps) => {
+  if (applications.length === 0) {
+    return (
+      <div className="rounded-lg border border-gray-200 overflow-hidden shadow-sm">
+        <div className="text-center py-12 text-muted-foreground">
+          <p className="text-lg font-medium text-gray-500">No applications found</p>
+          <p className="text-sm text-gray-400">Try adjusting your filters or search terms</p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="space-y-3">
       {applications.map((app) => (

@@ -234,7 +234,8 @@ const MobileFilterBar = ({ filters, onFilterChange, availableOptions, emiMonthOp
                 />
               </div>
 
-              <div className="space-y-2">
+              {/* Last Month Status Filter - Hidden as requested */}
+              {/* <div className="space-y-2">
                 <label className="block text-xs font-medium text-gray-700">Last Month Status</label>
                 <CustomMultiSelectFilter
                   label="Last Month Status"
@@ -242,7 +243,7 @@ const MobileFilterBar = ({ filters, onFilterChange, availableOptions, emiMonthOp
                   selected={safeFilters.lastMonthBounce}
                   onSelectionChange={(values) => handleTempFilterChange('lastMonthBounce', values)}
                 />
-              </div>
+              </div> */}
             </div>
 
             {/* Action Buttons */}

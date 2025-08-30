@@ -281,8 +281,8 @@ const DetailsTab = ({
         </Card>
       )}
       
-      {/* Vehicle Status */}
-      <Card>
+      {/* Vehicle Status - Hidden as requested */}
+      {/* <Card>
         <CardHeader>
             <CardTitle>Vehicle Status</CardTitle>
         </CardHeader>
@@ -310,10 +310,10 @@ const DetailsTab = ({
                 </Badge>
             )}
         </CardContent>
-      </Card>
+      </Card> */}
 
-      {/* Vehicle Status Change History */}
-      <Card>
+      {/* Vehicle Status Change History - Hidden as requested */}
+      {/* <Card>
         <CardHeader className="pb-3">
           <CardTitle className="text-sm flex items-center justify-between">
             <div className="flex items-center gap-2">
@@ -360,16 +360,16 @@ const DetailsTab = ({
             </div>
           )}
         </CardContent>
-      </Card>
+      </Card> */}
 
-      {/* Log Dialog for Vehicle Status */}
-      <LogDialog
+      {/* Log Dialog for Vehicle Status - Hidden as requested */}
+      {/* <LogDialog
         open={showLogDialog}
         onClose={() => setShowLogDialog(false)}
         logs={vehicleStatusLogs}
         title="Vehicle Status Change History"
         type="audit"
-      />
+      /> */}
     </div>
   );
 };

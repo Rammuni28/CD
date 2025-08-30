@@ -53,7 +53,8 @@ const FilterHeader = ({
                 <div className="absolute -top-1 -right-1 w-2 h-2 bg-green-500 rounded-full" title="Current month"></div>
               )}
             </div>
-            <Button
+            {/* Current button hidden as requested */}
+            {/* <Button
               variant="outline"
               size="sm"
               onClick={() => onEmiMonthChange?.(getCurrentEmiMonth())}
@@ -61,7 +62,7 @@ const FilterHeader = ({
               title="Switch to current month"
             >
               Current
-            </Button>
+            </Button> */}
           </div>
         </div>
 

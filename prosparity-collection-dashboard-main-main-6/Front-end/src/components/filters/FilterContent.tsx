@@ -93,14 +93,14 @@ const FilterContent = ({ filters, availableOptions, onFilterChange, onClose, onC
           placeholder="Select repayment"
         />
 
-        {/* Last Month Bounce Filter */}
-        <CustomMultiSelectFilter
+        {/* Last Month Bounce Filter - Hidden as requested */}
+        {/* <CustomMultiSelectFilter
           label="Last Month Bounce"
           options={availableOptions.lastMonthBounce || []}
           selected={filters.lastMonthBounce || []}
           onSelectionChange={(values) => onFilterChange('lastMonthBounce', values)}
           placeholder="Select bounce status"
-        />
+        /> */}
 
         {/* PTP Date Filter */}
         <PtpDateFilter
@@ -109,14 +109,14 @@ const FilterContent = ({ filters, availableOptions, onFilterChange, onClose, onC
           availableOptions={availableOptions.ptpDateOptions || []}
         />
 
-        {/* Vehicle Status Filter */}
-        <CustomMultiSelectFilter
+        {/* Vehicle Status Filter - Hidden as requested */}
+        {/* <CustomMultiSelectFilter
           label="Vehicle Status"
           options={availableOptions.vehicle_statuses || []}
           selected={filters.vehicleStatus || []}
           onSelectionChange={(values) => onFilterChange('vehicleStatus', values)}
           placeholder="Select vehicle status"
-        />
+        /> */}
       </div>
 
       {/* Action Buttons */}

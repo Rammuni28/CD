@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { API_BASE_URL } from "@/integrations/api/client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -93,7 +94,7 @@ const PendingApprovals = ({ onUpdate }: PendingApprovalsProps) => {
 
       console.log('Sending approve payload:', payload); // Debug log
 
-      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000'}/api/v1/paidpending-approval/approve`, {
+      const response = await fetch(`${API_BASE_URL}/paidpending-approval/approve`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -140,7 +141,7 @@ const PendingApprovals = ({ onUpdate }: PendingApprovalsProps) => {
 
       console.log('Sending reject payload:', payload); // Debug log
 
-      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000'}/api/v1/paidpending-approval/approve`, {
+      const response = await fetch(`${API_BASE_URL}/paidpending-approval/approve`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
