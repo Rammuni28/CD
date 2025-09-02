@@ -6,6 +6,7 @@ import { useQueryCache } from './useQueryCache';
 import { normalizeEmiMonth, groupDatesByMonth } from '@/utils/dateUtils';
 import { VEHICLE_STATUS_OPTIONS, STATUS_FILTER_OPTIONS } from '@/constants/options';
 import { FiltersService } from '@/integrations/api/services';
+import { getCurrentEmiMonth } from '@/utils/formatters';
 
 interface CascadingFilterOptions {
   branches: string[];
@@ -54,9 +55,9 @@ export const useOptimizedCascadingFilters = () => {
   });
 
   // Hardcode EMI month options
-  const emiMonthOptions = ['Jul-24'];
-  const [selectedEmiMonth, setSelectedEmiMonth] = useState<string>('Jul-24');
-  const [defaultEmiMonth, setDefaultEmiMonth] = useState<string>('Jul-24');
+  const emiMonthOptions = [getCurrentEmiMonth()];
+  const [selectedEmiMonth, setSelectedEmiMonth] = useState<string>(getCurrentEmiMonth());
+  const [defaultEmiMonth, setDefaultEmiMonth] = useState<string>(getCurrentEmiMonth());
   const [loading, setLoading] = useState(false);
 
   // Remove or comment out fetchAllEmiMonths and any dynamic EMI month logic

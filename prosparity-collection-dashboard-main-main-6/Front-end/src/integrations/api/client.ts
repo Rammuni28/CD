@@ -1,8 +1,8 @@
 import { toast } from "@/hooks/use-toast";
-import { formatEmiMonth } from '@/utils/formatters';
+import { formatEmiMonth, getCurrentEmiMonth } from '@/utils/formatters';
 
 // Export the API base URL for use in services
-export const API_BASE_URL = "http://localhost:8002/api/v1"; 
+export const API_BASE_URL = "http://13.203.110.46:8000/api/v1"; 
 
 // API Response wrapper for consistent error handling
 export interface ApiResponse<T = any> {
@@ -179,7 +179,7 @@ export function mapApiResponseToApplication(apiItem: ApiApplicationItem): any {
 }
 
 // Legacy functions for backward compatibility
-export async function getApplicationDetails(applicationId: string, emiMonth: string = "Aug-25"): Promise<any> {
+export async function getApplicationDetails(applicationId: string, emiMonth: string = getCurrentEmiMonth()): Promise<any> {
   const params = new URLSearchParams({
     emi_month: emiMonth,
     search: applicationId,
@@ -201,7 +201,7 @@ export async function getApplicationDetails(applicationId: string, emiMonth: str
 }
 
 export async function getFilteredApplications(
-  emiMonth: string = "Aug-25",
+  emiMonth: string = getCurrentEmiMonth(),
   search: string = "",
   offset: number = 0,
   limit: number = 20
@@ -225,7 +225,7 @@ export async function getFilteredApplications(
   };
 }
 
-export async function getApplicationsList(emiMonth: string = "Aug-25"): Promise<any[]> {
+export async function getApplicationsList(emiMonth: string = getCurrentEmiMonth()): Promise<any[]> {
   const params = new URLSearchParams({
     emi_month: emiMonth,
     offset: "0",

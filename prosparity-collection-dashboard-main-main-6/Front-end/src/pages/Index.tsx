@@ -41,12 +41,12 @@ const Index = () => {
     ptpDate: [],
     vehicleStatus: []
   });
-  const [selectedEmiMonthRaw, setSelectedEmiMonthRaw] = useState('Aug-25');
+  const [selectedEmiMonthRaw, setSelectedEmiMonthRaw] = useState(getCurrentEmiMonth());
   const [summary, setSummary] = useState(null);
   const [summaryLoading, setSummaryLoading] = useState(false);
 
   // Extract selected EMI month - prioritize user selection
-  const selectedEmiMonth = selectedEmiMonthRaw || 'Aug-25';
+  const selectedEmiMonth = selectedEmiMonthRaw || getCurrentEmiMonth();
   
   // Debug logging for EMI month changes
   useEffect(() => {

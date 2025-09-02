@@ -1,4 +1,5 @@
 import { API_BASE_URL, getAuthHeaders } from '../client';
+import { getCurrentEmiMonth } from '@/utils/formatters';
 
 // Types for application data
 export interface ApplicationFilterParams {
@@ -74,7 +75,7 @@ export class ApplicationService {
 
   // GET /api/v1/applications/ - Get applications with basic filters
   static async getApplications(
-    emiMonth: string = "Aug-25",
+    emiMonth: string = getCurrentEmiMonth(),
     search: string = "",
     offset: number = 0,
     limit: number = 20
@@ -94,7 +95,7 @@ export class ApplicationService {
   }
 
   // GET /api/v1/applications/ - Get all applications for a month
-  static async getAllApplications(emiMonth: string = "Aug-25"): Promise<ApplicationItem[]> {
+  static async getAllApplications(emiMonth: string = getCurrentEmiMonth()): Promise<ApplicationItem[]> {
     const params: ApplicationFilterParams = {
       emi_month: emiMonth,
       offset: 0,
@@ -106,7 +107,7 @@ export class ApplicationService {
   }
 
   // GET /api/v1/applications/ - Get single application details
-  static async getApplicationDetails(applicationId: string, emiMonth: string = "Aug-25"): Promise<ApplicationItem> {
+  static async getApplicationDetails(applicationId: string, emiMonth: string = getCurrentEmiMonth()): Promise<ApplicationItem> {
     const params: ApplicationFilterParams = {
       emi_month: emiMonth,
       search: applicationId,
